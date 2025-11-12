@@ -18,29 +18,29 @@ const { sendVerificationEmail } = require('../services/emailService');
 
 async function register(req, res) {
   try {
-    // STEP 1: Get data from request body
+    //Get data from request body
     const { email, password } = req.body;
     
     console.log('📝 Registration attempt for:', email);
     
-    // STEP 2: Validate inputs exist
+    //Validate inputs exist
     if (!email || !password) {
       return res.status(400).json({ 
         error: 'Email and password are required' 
       });
     }
     
-    // STEP 3: Sanitize email (remove spaces, lowercase)
+    //Sanitize email (remove spaces, lowercase)
     const cleanEmail = sanitizeEmail(email);
     
-    // STEP 4: Validate email format
+    //Validate email format
     if (!isValidEmail(cleanEmail)) {
       return res.status(400).json({ 
         error: 'Invalid email format' 
       });
     }
     
-    // STEP 5: Validate password strength
+    //Validate password strength
     const passwordCheck = isValidPassword(password);
     if (!passwordCheck.valid) {
       return res.status(400).json({ 
@@ -48,7 +48,7 @@ async function register(req, res) {
       });
     }
     
-    // STEP 6: Check if email already exists
+    //Check if email already exists
     const { data: existingUser } = await supabase
       .from('users')
       .select('id')
@@ -61,13 +61,13 @@ async function register(req, res) {
       });
     }
     
-    // STEP 7: Hash the password (security!)
+    //Hash the password (security!)
     const passwordHash = await hashPassword(password);
     
-    // STEP 8: Generate verification token (random string)
+    //Generate verification token (random string)
     const verificationToken = generateVerificationToken();
     
-    // STEP 9: Insert user into database
+    //Insert user into database
     const { data: newUser, error: insertError } = await supabase
       .from('users')
       .insert({
@@ -87,10 +87,10 @@ async function register(req, res) {
       });
     }
     
-    // STEP 10: Send verification email
+    //Send verification email
     await sendVerificationEmail(cleanEmail, verificationToken);
     
-    // STEP 11: Return success (NO PASSWORD in response!)
+    //Return success (NO PASSWORD in response!)
     console.log('✅ User registered:', newUser.email);
     
     res.status(201).json({
@@ -203,5 +203,6 @@ async function verifyEmail(req, res) {
 }
 
 module.exports = {
-  register
+  register,
+  verifyEmail
 };
