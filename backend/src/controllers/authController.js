@@ -111,6 +111,97 @@ async function register(req, res) {
   }
 }
 
+/**
+ * EMAIL VERIFICATION FUNCTION
+ * 
+ * 1. Get token from request body
+ * 2. Validate token exists
+ * 3. Find user with this token in database
+ * 4. Check if user exists
+ * 5. Check if already verified
+ * 6. Update user: set is_verified = true
+ * 7. Clear the verification token
+ * 8. Send success response
+ */
+
+async function verifyEmail(req, res) {
+  try {
+  
+    //Get token from request
+    const { token } = req.body;
+    console.log('📧 Email verification attempt');
+    console.log(token ? token.substring(0, 10) + '*****' : 'MISSING');
+    
+    //Validate token
+    if (!token) {
+      return res.status(400).json({ 
+        error: 'Verification token is required' 
+      });
+    }
+    
+    
+    // Find user
+    const { data: user, error: findError } = await supabase
+     .from('users')
+     .select('id, email, is_verified')
+     .eq('verification_token', token)
+     .single();
+    
+    
+    // Check user exists
+    if (findError || !user) {
+      console.log('❌ User not found with this token');
+      return res.status(400).json({ 
+        error: 'Invalid or expired verification token' 
+      });
+    }
+    
+    
+    //Check if already verified
+    if (user.is_verified) {
+      console.log('⚠️ User already verified:', user.email);
+      return res.status(400).json({ 
+        error: 'Email already verified. You can login now.' 
+      });
+    }
+    
+    
+    //Update user
+    const { error: updateError } = await supabase
+     .from('users')
+     .update({
+       is_verified: true,
+        verification_token: null
+     })
+     .eq('id', user.id);
+
+// Check if update failed
+   if (updateError) {
+    console.error('❌ Database update failed:', updateError);
+    return res.status(500).json({ 
+      error: 'Failed to verify email. Please try again.' 
+    });
+  }
+  
+  console.log('✅ Email verified for:', user.email);
+    
+    
+    //success response
+    res.status(200).json({
+      message: 'Email verified successfully! You can now login.',
+      email: user.email
+    });
+    
+    
+  } catch (error) {
+    // Step 8: Handle errors
+    console.error('Email verification error:', error);
+    res.status(500).json({ 
+      error: 'An error occurred during verification' 
+    });
+  }
+}
+
 module.exports = {
   register
 };
