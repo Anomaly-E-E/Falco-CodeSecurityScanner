@@ -13,7 +13,7 @@ const { sendVerificationEmail } = require('../services/emailService');
  * 5.  create: verification token (random string)
  * 6.  insert: user into database
  * 7.  send: verification email
- * 8.  return: success message (NOT the password!)
+ * 8.  return: success message
  */
 
 async function register(req, res) {
