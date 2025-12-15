@@ -42,7 +42,7 @@ It analyzes your code for potential security flaws like **SQL Injection**, **XSS
 | 🧠 **Backend** | Node.js • Express |
 | 🗄️ **Database** | PostgreSQL • Supabase |
 | 🔐 **Auth & Security** | JWT • bcrypt |
-| 🧰 **Other Tools** | Postman • OpenAI API |
+| 🧰 **Other Tools** |  GEMNI API |
 
 </div>
 
