@@ -66,7 +66,7 @@ async function analyzeScan(req, res){
         //Analyze code with AI
         console.log(`Starting AI analysis...`);
         const vulnerabilities = await analyzeCode(code, language);
-        console.log(`Found ${vulnerabilities.length} vulnerabilities!!!`);
+        
 
         //Deduct 1 credit from user
         const newCredits = user.credits - 1;
@@ -116,7 +116,7 @@ async function analyzeScan(req, res){
               creditsRemaining: updatedUser.credits,
               scannedAt: new Date().toISOString()
             }
-          });
+          }, null, 2);
 
     }catch (error) {
         console.error('❌ Scan error:', error);
@@ -158,7 +158,7 @@ async function getScanHistory(req, res) {
         vulnerabilitiesCount: scan.vulnerabilities_count,
         status: scan.status,
         scannedAt: scan.created_at
-      }))
+      },null, 2))
     });
     
   } catch (error) {

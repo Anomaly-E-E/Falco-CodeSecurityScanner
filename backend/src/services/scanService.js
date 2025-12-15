@@ -81,6 +81,7 @@ async function analyzeCode(code, language) {
    -Explain the Problem in an easy so people wihtout a security backgroud will be able to understand
    -For how to fix explain is an easy way  
    -For same Vulnerability show togther which all lines have it
+   -Do not refer to past scans, think and start fresh 
 
    Code to analyze:
    ${code}`;

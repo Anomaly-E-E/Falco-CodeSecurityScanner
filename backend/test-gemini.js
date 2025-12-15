@@ -2,21 +2,7 @@ require('dotenv').config();
 const { analyzeCode } = require('./src/services/scanService');
 
 // Vulnerable Python code with SQL injection
-const vulnerableCode = `
-import sqlite3
-
-def get_user(user_id):
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    
-    # VULNERABLE: Direct string concatenation
-    query = "SELECT * FROM users WHERE id = " + user_id
-    cursor.execute(query)
-    query = "SELECT * FROM users WHERE id = " + user_id
-    cursor.execute(query)
-    
-    return cursor.fetchone()
-`;
+const vulnerableCode = `System.out.println("password is 000")`;
 
 console.log('🧪 Testing Gemini AI Analysis...\n');
 console.log('Code being analyzed:');
