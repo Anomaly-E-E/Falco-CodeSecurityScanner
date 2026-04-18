@@ -1,20 +1,11 @@
 import React, { useRef } from 'react';
 
-const MAX = 400;
-
 export default function CodeEditor({ value, onChange, disabled }) {
   const textareaRef = useRef(null);
   const count = value.length;
-  const overLimit = count > MAX;
-  const nearLimit = count >= 340;
 
-  const counterColor = overLimit
-    ? 'var(--danger)'
-    : nearLimit
-    ? 'var(--accent)'
-    : 'var(--text-muted)';
-
-  const borderColor = overLimit ? 'var(--danger)' : 'var(--border)';
+  const counterColor = 'var(--text-muted)';
+  const borderColor = 'var(--border)';
 
   return (
     <div style={{ position: 'relative' }}>
@@ -44,10 +35,8 @@ export default function CodeEditor({ value, onChange, disabled }) {
           display: 'block',
         }}
         onFocus={e => {
-          if (!overLimit) {
-            e.target.style.borderColor = 'var(--accent)';
-            e.target.style.boxShadow = '0 0 0 3px var(--accent-dim)';
-          }
+          e.target.style.borderColor = 'var(--accent)';
+          e.target.style.boxShadow = '0 0 0 3px var(--accent-dim)';
         }}
         onBlur={e => {
           e.target.style.borderColor = overLimit ? 'var(--danger)' : 'var(--border)';
@@ -91,7 +80,7 @@ export default function CodeEditor({ value, onChange, disabled }) {
         transition: 'color var(--duration-fast)',
         letterSpacing: '0.02em',
       }}>
-        {count}/{MAX}
+        {count} chars
       </span>
     </div>
   );

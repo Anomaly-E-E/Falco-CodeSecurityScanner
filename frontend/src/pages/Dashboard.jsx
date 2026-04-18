@@ -27,8 +27,7 @@ export default function Dashboard() {
   const resultsRef = useRef(null);
 
   const noCredits = (user?.credits ?? 1) <= 0;
-  const overLimit = code.length > 400;
-  const canScan = code.trim().length > 0 && !overLimit && !noCredits && !scanning;
+  const canScan = code.trim().length > 0 && !noCredits && !scanning;
 
   async function handleScan() {
     setError('');
@@ -88,7 +87,7 @@ export default function Dashboard() {
             fontFamily: 'var(--font-mono)',
             letterSpacing: '0.02em',
           }}>
-            python · javascript · java · c/c++ · max 400 chars
+            python · javascript · java · c/c++
           </p>
         </div>
 
