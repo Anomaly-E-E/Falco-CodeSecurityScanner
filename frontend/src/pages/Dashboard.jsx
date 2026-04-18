@@ -8,12 +8,13 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import EmptyState from '../components/EmptyState';
 
 const SECTION_LABEL = {
-  fontSize: '0.7rem',
+  fontSize: '0.72rem',
   fontFamily: 'var(--font-mono)',
   textTransform: 'uppercase',
-  letterSpacing: '0.1em',
+  letterSpacing: '0.12em',
   color: 'var(--text-muted)',
-  marginBottom: 10,
+  marginBottom: 12,
+  fontWeight: 500,
 };
 
 export default function Dashboard() {
@@ -47,24 +48,24 @@ export default function Dashboard() {
   }
 
   return (
-    <div style={{ maxWidth: 1100, margin: '0 auto', padding: '28px 20px 48px' }}>
+    <div style={{ maxWidth: 1140, margin: '0 auto', padding: '32px 24px 56px' }}>
 
       <div style={{
         display: 'flex',
-        gap: 20,
-        marginBottom: 40,
+        gap: 24,
+        marginBottom: 48,
         flexWrap: 'wrap',
       }}>
 
-        <div style={{ flex: '3 1 460px', minWidth: 0 }}>
+        <div style={{ flex: '3 1 480px', minWidth: 0 }}>
           <p style={SECTION_LABEL}>scan</p>
           <CodeEditor value={code} onChange={setCode} disabled={scanning} />
 
           {error && (
-            <div className="error-msg" style={{ marginTop: 8 }}>{error}</div>
+            <div className="error-msg" style={{ marginTop: 10 }}>{error}</div>
           )}
 
-          <div style={{ marginTop: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 12 }}>
             <button
               onClick={handleScan}
               disabled={!canScan}
@@ -81,16 +82,17 @@ export default function Dashboard() {
           </div>
 
           <p style={{
-            marginTop: 8,
+            marginTop: 10,
             fontSize: '0.72rem',
             color: 'var(--text-muted)',
             fontFamily: 'var(--font-mono)',
+            letterSpacing: '0.02em',
           }}>
             python · javascript · java · c/c++ · max 400 chars
           </p>
         </div>
 
-        <div ref={resultsRef} style={{ flex: '2 1 320px', minWidth: 0 }}>
+        <div ref={resultsRef} style={{ flex: '2 1 340px', minWidth: 0 }}>
           <p style={SECTION_LABEL}>results</p>
           {scanResult ? (
             <ScanResults
@@ -101,10 +103,10 @@ export default function Dashboard() {
           ) : (
             <div style={{
               border: '1px solid var(--border)',
-              borderRadius: 'var(--radius)',
+              borderRadius: 'var(--radius-lg)',
               background: 'var(--bg-card)',
               height: '100%',
-              minHeight: 180,
+              minHeight: 200,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

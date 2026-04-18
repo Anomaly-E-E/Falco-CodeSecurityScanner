@@ -15,7 +15,7 @@ export default function ResetPassword() {
   if (!token) {
     return (
       <div style={authWrap}>
-        <div className="card" style={{ ...authCard, maxWidth: 380, width: '100%' }}>
+        <div className="card" style={{ ...authCard, maxWidth: 400, width: '100%' }}>
           <p style={{ color: 'var(--danger)', fontSize: '0.875rem' }}>
             invalid reset link. <Link to="/forgot-password">request a new one</Link>.
           </p>
@@ -42,7 +42,7 @@ export default function ResetPassword() {
         <div className="card" style={authCard}>
           {done ? (
             <>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: 14 }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: 16 }}>
                 password updated.
               </p>
               <Link to="/login" className="btn btn-primary" style={{ display: 'flex', justifyContent: 'center' }}>

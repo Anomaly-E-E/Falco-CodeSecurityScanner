@@ -37,10 +37,10 @@ export default function VerifyEmail() {
 
           {status === 'success' && (
             <>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--success)', marginBottom: 10 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--success)', marginBottom: 12, letterSpacing: '0.06em' }}>
                 [verified]
               </p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 18, lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 20, lineHeight: 1.7 }}>
                 {message}
               </p>
               <Link to="/login" className="btn btn-primary" style={{ display: 'flex', justifyContent: 'center' }}>
@@ -51,10 +51,10 @@ export default function VerifyEmail() {
 
           {status === 'error' && (
             <>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--danger)', marginBottom: 10 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--danger)', marginBottom: 12 }}>
                 [failed]
               </p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 18, lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: 20, lineHeight: 1.7 }}>
                 {message}
               </p>
               <Link to="/login" style={{ fontSize: '0.85rem' }}>back to sign in</Link>

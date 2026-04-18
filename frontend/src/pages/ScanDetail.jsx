@@ -22,7 +22,7 @@ export default function ScanDetail() {
 
   if (loading) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', padding: 60 }}>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: 64 }}>
         <LoadingSpinner />
       </div>
     );
@@ -30,10 +30,10 @@ export default function ScanDetail() {
 
   if (error || !scan) {
     return (
-      <div style={{ maxWidth: 700, margin: '40px auto', padding: '0 20px' }}>
+      <div style={{ maxWidth: 740, margin: '44px auto', padding: '0 24px' }}>
         <div className="error-msg">{error || 'scan not found'}</div>
         <button onClick={() => navigate('/dashboard')} style={{
-          marginTop: 10, background: 'none', border: 'none',
+          marginTop: 12, background: 'none', border: 'none',
           color: 'var(--accent)', cursor: 'pointer', fontSize: '0.85rem', padding: 0,
         }}>
           ← back
@@ -43,14 +43,15 @@ export default function ScanDetail() {
   }
 
   return (
-    <div style={{ maxWidth: 860, margin: '0 auto', padding: '28px 20px 48px' }}>
+    <div style={{ maxWidth: 900, margin: '0 auto', padding: '32px 24px 56px', animation: 'fadeIn 0.3s ease both' }}>
       <button
         onClick={() => navigate('/dashboard')}
         style={{
           background: 'none', border: 'none',
-          color: 'var(--text-muted)', fontSize: '0.8rem',
-          cursor: 'pointer', padding: 0, marginBottom: 20,
-          transition: 'color 0.1s',
+          color: 'var(--text-muted)', fontSize: '0.82rem',
+          fontFamily: 'var(--font-mono)',
+          cursor: 'pointer', padding: 0, marginBottom: 24,
+          transition: `color var(--duration-fast)`,
         }}
         onMouseEnter={e => e.target.style.color = 'var(--text-primary)'}
         onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
@@ -58,12 +59,11 @@ export default function ScanDetail() {
         ← back
       </button>
 
-      {/* meta row */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 16,
-        marginBottom: 20,
+        gap: 18,
+        marginBottom: 24,
         flexWrap: 'wrap',
       }}>
         <span style={{
@@ -72,7 +72,7 @@ export default function ScanDetail() {
           color: 'var(--accent)',
           border: '1px solid var(--accent)',
           padding: '2px 8px',
-          borderRadius: 3,
+          borderRadius: 'var(--radius-sm)',
           opacity: 0.8,
         }}>
           {scan.language}

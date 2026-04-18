@@ -28,7 +28,7 @@ export default function ForgotPassword() {
         <AuthLogo />
         <div className="card" style={authCard}>
           {sent ? (
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
               if that email is registered, check your inbox for a reset link.
             </p>
           ) : (

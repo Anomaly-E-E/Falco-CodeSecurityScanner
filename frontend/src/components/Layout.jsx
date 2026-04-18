@@ -13,12 +13,14 @@ export default function Layout() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-primary)' }}>
       <nav style={{
-        background: 'var(--bg-primary)',
+        background: 'rgba(31, 29, 26, 0.85)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         borderBottom: '1px solid var(--border)',
-        padding: '0 24px',
-        height: 52,
+        padding: '0 28px',
+        height: 56,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -31,23 +33,23 @@ export default function Layout() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 7,
+            gap: 8,
             textDecoration: 'none',
           }}
         >
-          <span style={{ color: 'var(--accent)', fontSize: '0.75rem', lineHeight: 1 }}>◆</span>
+          <span style={{ color: 'var(--accent)', fontSize: '0.85rem', lineHeight: 1 }}>◆</span>
           <span style={{
             fontFamily: 'var(--font-mono)',
             fontWeight: 500,
-            fontSize: '0.9rem',
+            fontSize: '0.95rem',
             color: 'var(--text-primary)',
-            letterSpacing: '0.02em',
+            letterSpacing: '0.04em',
           }}>
             falco
           </span>
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
           <CreditsBadge credits={user?.credits ?? null} />
           <span style={{
             color: 'var(--text-muted)',
@@ -67,9 +69,10 @@ export default function Layout() {
               border: 'none',
               color: 'var(--text-muted)',
               fontSize: '0.78rem',
+              fontFamily: 'var(--font-mono)',
               cursor: 'pointer',
               padding: 0,
-              transition: 'color 0.12s',
+              transition: `color var(--duration-fast)`,
             }}
             onMouseEnter={e => e.target.style.color = 'var(--text-primary)'}
             onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}

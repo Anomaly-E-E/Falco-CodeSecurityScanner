@@ -27,16 +27,14 @@ export default function ScanHistoryTable({ refreshKey }) {
     setLoading(false);
   }, []);
 
-  // reset to page 1 when a new scan completes
   useEffect(() => { setPage(1); }, [refreshKey]);
-
   useEffect(() => { fetchHistory(page); }, [page, fetchHistory]);
 
   const totalPages = Math.ceil(total / limit);
 
   if (loading) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', padding: '32px 0' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '36px 0' }}>
         <LoadingSpinner />
       </div>
     );
@@ -44,21 +42,21 @@ export default function ScanHistoryTable({ refreshKey }) {
 
   if (error) {
     return (
-      <div style={{ fontSize: '0.82rem', color: 'var(--danger)', padding: '12px 0' }}>
+      <div style={{ fontSize: '0.82rem', color: 'var(--danger)', padding: '14px 0' }}>
         {error}
       </div>
     );
   }
 
   if (scans.length === 0) {
-    return <EmptyState icon="[—]" message="no scans yet" />;
+    return <EmptyState icon="[--]" message="no scans yet" />;
   }
 
   return (
     <div>
       <div style={{
         border: '1px solid var(--border)',
-        borderRadius: 'var(--radius)',
+        borderRadius: 'var(--radius-lg)',
         overflow: 'hidden',
       }}>
         {scans.map((scan, i) => (
@@ -69,12 +67,12 @@ export default function ScanHistoryTable({ refreshKey }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              padding: '11px 14px',
-              borderBottom: i < scans.length - 1 ? '1px solid var(--border)' : 'none',
+              padding: '13px 16px',
+              borderBottom: i < scans.length - 1 ? '1px solid var(--border-subtle)' : 'none',
               cursor: 'pointer',
-              transition: 'background 0.1s',
+              transition: `background var(--duration-fast)`,
               background: 'var(--bg-card)',
-              gap: 12,
+              gap: 14,
             }}
             onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-elevated)'}
             onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-card)'}
@@ -85,9 +83,9 @@ export default function ScanHistoryTable({ refreshKey }) {
                 fontSize: '0.7rem',
                 color: 'var(--accent)',
                 border: '1px solid var(--accent)',
-                padding: '1px 6px',
-                borderRadius: 3,
-                opacity: 0.75,
+                padding: '2px 7px',
+                borderRadius: 'var(--radius-sm)',
+                opacity: 0.7,
                 flexShrink: 0,
               }}>
                 {scan.language}
@@ -112,9 +110,7 @@ export default function ScanHistoryTable({ refreshKey }) {
               }}>
                 {scan.vulnerabilitiesCount > 0 ? `${scan.vulnerabilitiesCount} found` : 'clean'}
               </span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--accent)' }}>
-                view →
-              </span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--accent)' }}>→</span>
             </div>
           </div>
         ))}
@@ -125,8 +121,8 @@ export default function ScanHistoryTable({ refreshKey }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginTop: 12,
-          padding: '0 2px',
+          marginTop: 14,
+          padding: '0 4px',
         }}>
           <button
             onClick={() => setPage(p => p - 1)}
@@ -136,13 +132,14 @@ export default function ScanHistoryTable({ refreshKey }) {
               border: 'none',
               color: page === 1 ? 'var(--border-light)' : 'var(--text-secondary)',
               fontSize: '0.82rem',
+              fontFamily: 'var(--font-mono)',
               cursor: page === 1 ? 'default' : 'pointer',
               padding: 0,
             }}
           >
             ← prev
           </button>
-          <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>
             {page} / {totalPages}
           </span>
           <button
@@ -153,6 +150,7 @@ export default function ScanHistoryTable({ refreshKey }) {
               border: 'none',
               color: page >= totalPages ? 'var(--border-light)' : 'var(--text-secondary)',
               fontSize: '0.82rem',
+              fontFamily: 'var(--font-mono)',
               cursor: page >= totalPages ? 'default' : 'pointer',
               padding: 0,
             }}

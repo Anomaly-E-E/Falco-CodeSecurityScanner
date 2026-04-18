@@ -3,13 +3,16 @@ import React from 'react';
 export default function CreditsBadge({ credits }) {
   let color = 'var(--accent)';
   let borderColor = 'var(--accent)';
+  let background = 'transparent';
 
   if (credits !== null && credits <= 0) {
     color = 'var(--danger)';
     borderColor = 'var(--danger)';
+    background = 'var(--danger-dim)';
   } else if (credits !== null && credits <= 2) {
     color = 'var(--warning)';
     borderColor = 'var(--warning)';
+    background = 'var(--warning-dim)';
   }
 
   return (
@@ -17,14 +20,15 @@ export default function CreditsBadge({ credits }) {
       display: 'inline-flex',
       alignItems: 'center',
       border: `1px solid ${borderColor}`,
-      borderRadius: 20,
-      padding: '3px 10px',
-      fontSize: '0.75rem',
+      borderRadius: 'var(--radius-full)',
+      padding: '4px 12px',
+      fontSize: '0.72rem',
       fontFamily: 'var(--font-mono)',
       color,
-      letterSpacing: '0.03em',
+      background,
+      letterSpacing: '0.04em',
     }}>
-      {credits ?? '—'} cr
+      {credits ?? '-'} cr
     </span>
   );
 }

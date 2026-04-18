@@ -7,26 +7,28 @@ export default function EmptyState({ icon, message, cta }) {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '40px 20px',
-      gap: 10,
+      padding: '48px 24px',
+      gap: 12,
     }}>
       {icon && (
         <span style={{
           fontFamily: 'var(--font-mono)',
-          fontSize: '1rem',
-          color: 'var(--border-light)',
-          letterSpacing: '0.05em',
+          fontSize: '1.1rem',
+          color: 'var(--text-muted)',
+          letterSpacing: '0.06em',
           userSelect: 'none',
+          opacity: 0.6,
         }}>
           {icon}
         </span>
       )}
       <p style={{
         color: 'var(--text-muted)',
-        fontSize: '0.82rem',
+        fontSize: '0.85rem',
         textAlign: 'center',
-        maxWidth: 240,
-        lineHeight: 1.5,
+        maxWidth: 260,
+        lineHeight: 1.6,
+        fontFamily: 'var(--font-serif)',
       }}>
         {message}
       </p>
@@ -34,14 +36,15 @@ export default function EmptyState({ icon, message, cta }) {
         <button
           onClick={cta.onClick}
           style={{
-            marginTop: 4,
+            marginTop: 6,
             background: 'none',
             border: 'none',
             color: 'var(--accent)',
-            fontSize: '0.82rem',
+            fontSize: '0.85rem',
             cursor: 'pointer',
             padding: 0,
             textDecoration: 'underline',
+            textUnderlineOffset: '3px',
           }}
         >
           {cta.label}

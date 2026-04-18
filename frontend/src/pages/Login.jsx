@@ -40,14 +40,14 @@ export default function Login() {
             <div className="form-group">
               <label className="form-label">
                 password
-                <Link to="/forgot-password" style={{ fontSize: '0.75rem' }}>forgot it?</Link>
+                <Link to="/forgot-password" style={{ fontSize: '0.72rem', textTransform: 'none', letterSpacing: 0 }}>forgot it?</Link>
               </label>
               <input type="password" className="form-input" value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="••••••••" required />
             </div>
             <button type="submit" className="btn btn-primary"
-              disabled={loading} style={{ width: '100%', marginTop: 6 }}>
+              disabled={loading} style={{ width: '100%', marginTop: 8 }}>
               {loading ? 'signing in...' : 'sign in'}
             </button>
           </form>

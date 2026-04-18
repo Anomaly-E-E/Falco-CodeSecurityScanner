@@ -29,11 +29,11 @@ export default function Register() {
         <div style={authInner}>
           <AuthLogo />
           <div className="card" style={authCard}>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 12 }}>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: 12 }}>
               check your email — we sent a verification link to{' '}
               <span style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem' }}>{email}</span>.
             </p>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+            <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
               already verified? <Link to="/login">sign in</Link>
             </p>
           </div>
@@ -47,7 +47,13 @@ export default function Register() {
       <div style={authInner}>
         <AuthLogo />
         <div className="card" style={authCard}>
-          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: 16 }}>
+          <p style={{
+            fontSize: '0.75rem',
+            color: 'var(--text-muted)',
+            marginBottom: 18,
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: '0.02em',
+          }}>
             10 free credits on signup
           </p>
           {error && <div className="error-msg">{error}</div>}
@@ -71,7 +77,7 @@ export default function Register() {
                 placeholder="same as above" required />
             </div>
             <button type="submit" className="btn btn-primary"
-              disabled={loading} style={{ width: '100%', marginTop: 6 }}>
+              disabled={loading} style={{ width: '100%', marginTop: 8 }}>
               {loading ? 'creating account...' : 'create account'}
             </button>
           </form>

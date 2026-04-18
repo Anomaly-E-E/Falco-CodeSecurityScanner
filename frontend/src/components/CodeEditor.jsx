@@ -29,25 +29,29 @@ export default function CodeEditor({ value, onChange, disabled }) {
         autoCorrect="off"
         style={{
           width: '100%',
-          minHeight: 240,
-          background: 'var(--bg-primary)',
+          minHeight: 260,
+          background: 'var(--bg-code)',
           border: `1px solid ${borderColor}`,
-          borderRadius: 'var(--radius)',
+          borderRadius: 'var(--radius-lg)',
           color: 'var(--text-primary)',
           fontFamily: 'var(--font-mono)',
-          fontSize: '0.8rem',
-          lineHeight: 1.65,
-          padding: '14px 40px 32px 14px',
+          fontSize: '0.82rem',
+          lineHeight: 1.7,
+          padding: '16px 44px 36px 16px',
           resize: 'vertical',
-          transition: 'border-color 0.12s',
+          transition: 'border-color var(--duration-fast), box-shadow var(--duration-fast)',
           outline: 'none',
           display: 'block',
         }}
         onFocus={e => {
-          if (!overLimit) e.target.style.borderColor = 'var(--accent)';
+          if (!overLimit) {
+            e.target.style.borderColor = 'var(--accent)';
+            e.target.style.boxShadow = '0 0 0 3px var(--accent-dim)';
+          }
         }}
         onBlur={e => {
           e.target.style.borderColor = overLimit ? 'var(--danger)' : 'var(--border)';
+          e.target.style.boxShadow = 'none';
         }}
       />
 
@@ -57,17 +61,17 @@ export default function CodeEditor({ value, onChange, disabled }) {
           title="clear"
           style={{
             position: 'absolute',
-            top: 10,
-            right: 10,
+            top: 12,
+            right: 12,
             background: 'none',
             border: 'none',
             color: 'var(--text-muted)',
-            fontSize: '1rem',
+            fontSize: '1.1rem',
             lineHeight: 1,
             cursor: 'pointer',
-            padding: '2px 4px',
-            borderRadius: 3,
-            transition: 'color 0.1s',
+            padding: '2px 6px',
+            borderRadius: 'var(--radius-sm)',
+            transition: 'color var(--duration-fast)',
           }}
           onMouseEnter={e => e.target.style.color = 'var(--text-primary)'}
           onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
@@ -78,13 +82,14 @@ export default function CodeEditor({ value, onChange, disabled }) {
 
       <span style={{
         position: 'absolute',
-        bottom: 9,
-        right: 11,
-        fontSize: '0.7rem',
+        bottom: 12,
+        right: 14,
+        fontSize: '0.72rem',
         fontFamily: 'var(--font-mono)',
         color: counterColor,
         userSelect: 'none',
-        transition: 'color 0.12s',
+        transition: 'color var(--duration-fast)',
+        letterSpacing: '0.02em',
       }}>
         {count}/{MAX}
       </span>

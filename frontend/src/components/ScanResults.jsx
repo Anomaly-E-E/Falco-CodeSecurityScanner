@@ -14,8 +14,8 @@ function Dot({ color }) {
   return (
     <span style={{
       display: 'inline-block',
-      width: 7,
-      height: 7,
+      width: 8,
+      height: 8,
       borderRadius: '50%',
       background: color,
       flexShrink: 0,
@@ -53,11 +53,11 @@ export default function ScanResults({ vulnerabilities, language }) {
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         gap: 10,
-        marginBottom: 14,
-        padding: '10px 12px',
+        marginBottom: 16,
+        padding: '12px 14px',
         background: 'var(--bg-card)',
         border: '1px solid var(--border)',
-        borderRadius: 'var(--radius)',
+        borderRadius: 'var(--radius-lg)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           {language && (
@@ -66,15 +66,15 @@ export default function ScanResults({ vulnerabilities, language }) {
               fontSize: '0.72rem',
               color: 'var(--accent)',
               border: '1px solid var(--accent)',
-              padding: '1px 7px',
-              borderRadius: 3,
-              opacity: 0.8,
+              padding: '2px 8px',
+              borderRadius: 'var(--radius-sm)',
+              opacity: 0.75,
             }}>
               {language}
             </span>
           )}
           <span style={{
-            fontSize: '0.82rem',
+            fontSize: '0.85rem',
             color: total > 0 ? 'var(--danger)' : 'var(--success)',
             fontWeight: 500,
           }}>
@@ -103,9 +103,9 @@ export default function ScanResults({ vulnerabilities, language }) {
                   fontSize: '0.72rem',
                   color: sortBy === s ? 'var(--accent)' : 'var(--text-muted)',
                   cursor: 'pointer',
-                  padding: '0 0 1px',
+                  padding: '0 0 2px',
                   borderBottom: sortBy === s ? '1px solid var(--accent)' : '1px solid transparent',
-                  transition: 'color 0.1s',
+                  transition: `color var(--duration-fast)`,
                 }}
               >
                 {s}
